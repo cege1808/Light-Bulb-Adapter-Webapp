@@ -1,3 +1,5 @@
+$(document).ready(function(){
+	
 
 
 
@@ -277,7 +279,7 @@
 		 // return return_var;
 	}
 
-
+})
 
 
 

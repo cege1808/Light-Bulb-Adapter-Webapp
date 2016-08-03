@@ -5,27 +5,24 @@
 	<title>Savvy Bulb</title>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="style.css">
-	<link href="bootstrap.min.css" rel="stylesheet"> 
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
 
 	<!-- Java Script -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="http://cdn.jsdelivr.net/sparkjs/1.0.0/spark.min.js" type="text/javascript" charset="utf-8"></script>  
+	
 
 	<meta charset=UTF-8>
 	<meta name="viewport" content="width=device-width, 
-					initial-scale=1.0
-					maximum-scale=1.0
-					user-scalable=no">
+	initial-scale=1.0
+	maximum-scale=1.0
+	user-scalable=no">
 </head>
 
 <body>
 
-<div class="container">
+	<div class="container">
 		<!-- Log in modal  -->
 		<div id="spark-login"></div>
 		<div id="log-out">
@@ -49,54 +46,54 @@
 		</div>
 
 
-	<div id="sortable" class="jumbotron">
-		<div class="row text-align">
-			<div class="segment">
-				
-				<button id="toggle1" class="btn">
-					<span class="glyphicon glyphicon-option-horizontal"></span>
-				</button>
-			
+		<div id="sortable" class="jumbotron">
+			<div class="row text-align">
+				<div class="segment">
 
-				<div class="heading">
-					<p class="label"><span id="label1"></span></p>
+					<button id="toggle1" class="btn">
+						<span class="glyphicon glyphicon-option-horizontal"></span>
+					</button>
 
-					<div class="switch">
-						<input type="checkbox" name="toggle">
-						<label for="toggle"><i></i></label>
-						<span></span>
+
+					<div class="heading">
+						<p class="label"><span id="label1"></span></p>
+
+						<div class="switch">
+							<input type="checkbox" name="toggle">
+							<label for="toggle"><i></i></label>
+							<span></span>
+						</div>
+
 					</div>
 
-				</div>
-
-				<div id="slider1"></div>
+					<div id="slider1"></div>
 <!--
 				<h6>output from slider: <span id="dimlevel"></span></p>		
 				<h6>output from particle: <span id="bulblevel"></span></p>	
--->
+				-->
 
 				<div id="collapse1" class="features">
 					<div id="strobe1">
-					<button class="button_off btn">
-						<p>Strobe</p>
-						<span class="glyphicon glyphicon-home"></span>
-						<span class="glyphicon glyphicon-glass"></span>
-					</button>
-					<button class="button_on btn">
-						<p>Strobe</p>
-						<span class="glyphicon glyphicon-home"></span>
-						<span class="glyphicon glyphicon-glass"></span>
-					</button>
+						<button class="button_off btn">
+							<p>Strobe</p>
+							<span class="glyphicon glyphicon-home"></span>
+							<span class="glyphicon glyphicon-glass"></span>
+						</button>
+						<button class="button_on btn">
+							<p>Strobe</p>
+							<span class="glyphicon glyphicon-home"></span>
+							<span class="glyphicon glyphicon-glass"></span>
+						</button>
 					</div>
 
 					
 
-				<p>Stobe timer alarm</p>
+					<p>Stobe timer alarm</p>
 				</div>
 			</div>
 
 
-	
+
 			<div class="segment">
 				
 				<button id="toggle2" class="btn">
@@ -114,7 +111,7 @@
 				</div>
 
 				<div id="slider2"></div>
-								
+
 				<div id="collapse2" class="features">
 					<div id="strobe2" class="col-lg-4">
 						<button class="button_off btn text-align">
@@ -130,9 +127,9 @@
 					</div>
 
 					<div id="timer" class="col-lg-4">
-						 <form id="countdown_form" onsubmit="return do_countdown();"> 
-						 <p id="timertitle" class="text-align"> Timer</p>
-						 <!--<input type="text" class="form-control text_align" placeholder="Enter Brightness" id="timerinput">-->
+						<form id="countdown_form" onsubmit="return do_countdown();"> 
+							<p id="timertitle" class="text-align"> Timer</p>
+							<!--<input type="text" class="form-control text_align" placeholder="Enter Brightness" id="timerinput">-->
 							<ul id="settimer" class="text-align">
 								<li>
 									<p class="timeRefHours">Hours</p>
@@ -313,9 +310,9 @@
 					</div>
 
 					<div id="alarm" class="col-lg-4">
-						 <form id="alarm_form" onsubmit="return do_alarm();">
-						 <p id="alarmtitle" class="text-align"> Alarm </p>
-						<!-- <input type="text" class="form-control text_align" placeholder="Enter Brightness" id="alarminput">-->
+						<form id="alarm_form" onsubmit="return do_alarm();">
+							<p id="alarmtitle" class="text-align"> Alarm </p>
+							<!-- <input type="text" class="form-control text_align" placeholder="Enter Brightness" id="alarminput">-->
 							<ul id="setalarm" class="text-align">
 								<li>
 									<p class="timeRefHours">Hours</p>
@@ -430,13 +427,16 @@
 	</div>
 
 </div>
-	
- 
 
-  	<script type="text/javascript" src="main.js"></script>
- 	<script src="jquery.simple.timer.js"></script>
-  	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="http://cdn.jsdelivr.net/sparkjs/1.0.0/spark.min.js" type="text/javascript" charset="utf-8"></script>  
+<script src="jquery.simple.timer.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="javascript/main.js"></script>
+
 </body>
 
 </html>

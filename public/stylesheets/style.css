@@ -222,7 +222,10 @@ Timer
 	height:auto;
 	width: 60px;
 	display: inline-block;
+}
 
+#settimer li .dropdown > select{
+	color: #202838;
 }
 
 #settimer li span {
@@ -307,8 +310,12 @@ Alarm
 	height:auto;
 	width: 60px;
 	display: inline-block;
-
 }
+
+#setalarm li .dropdown > select{
+	color: #202838;
+}
+
 
 #setalarm li span {
 	font-size: 30px;

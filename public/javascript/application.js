@@ -1,10 +1,4 @@
-
-
-
 $(function() {
-
-
-
 
 //Get you accesstoken from LocalStorage if you've logged in before.
 var access_token = localStorage.getItem("access_token");
@@ -14,23 +8,23 @@ var access_token = localStorage.getItem("access_token");
 		localStorage.removeItem("access_token");
 		window.location.reload();
 	}
-	
+
 	//replace Log-in button with Log-out button.
 	function showLogout(){
 		document.getElementById('log-out').style.display = 'flex';
 		document.getElementById('spark-login').style.display = 'none';
 	}
-	
+
 	//The login button logic from the library. Saves accestoken to LocalStorage.
-	sparkLogin(function(data){	
+	sparkLogin(function(data){
 		document.getElementById('spark-login-button').style.backgroundColor="#00E31A";
 		document.getElementById('spark-login-button').innerHTML = 'Logging in, please wait.';
-		console.log(data);		
+		console.log(data);
 		access_token = data.access_token;
 		localStorage.setItem("access_token", access_token);
 		LoggedIn(data);
 	});
-	
+
 	//If an accesstoken is still present from a login, then log in automatically.
 	if (access_token){
 		console.log(access_token);
@@ -41,15 +35,15 @@ var access_token = localStorage.getItem("access_token");
 	}
 
 	//------- Post log in functionality ---------
-	
+
 	// Sets brightness value on device
 	// Remember to rest value on table after calling this to keep table live.
 	function execute(deviceId, func) {
-		argument = document.getElementById(func + 'input'); 
+		argument = document.getElementById(func + 'input');
 		spark.callFunction(deviceId,func,argument.value,null);
 		argument.value = "";
 	};
-	
+
 	// Gets brightness value and insert into table.
 	function update(deviceId, variable) {
 		spark.getVariable(deviceId,variable,function(err, data){
@@ -60,11 +54,11 @@ var access_token = localStorage.getItem("access_token");
 		});
 
 	};
-	
+
 	function LoggedIn(data){
 		var devicesAt = spark.getAttributesForAll();
 		console.log(access_token);
-		
+
 		devicesAt.then(
 			function(data){
 				console.log('Core attrs retrieved successfully:', data);
@@ -75,12 +69,12 @@ var access_token = localStorage.getItem("access_token");
 					// Display dimming variable and field to set dimming in table.
 					// Loops through returned data array to find needed info.
 					console.log('- functions: ' + data[i].functions);
-					if (data[i].functions != null && data[i].variables != null) {	
+					if (data[i].functions != null && data[i].variables != null) {
 						for (func in data[i].functions) {
 							if (data[i].functions[func] == "setDimming") {
 								console.log('has setDimming Function');
 								console.log('has dimming variable');
-								
+
 								if (data[i].variables != null) {
 									for (variable in data[i].variables) {
 										if (variable == "dimming") {
@@ -89,13 +83,13 @@ var access_token = localStorage.getItem("access_token");
 										}
 									}
 								}
-								
+
 								functionName = data[i].functions[func]
 								var deviceName = data[i].name;
 								var lightName = deviceName.replace(/_/g, " ");
-								
+
 								$("#label1").append(lightName);
-								
+
 
 
 								// Intsert HTML at lights table body to create row for light
@@ -103,7 +97,7 @@ var access_token = localStorage.getItem("access_token");
 									'<tr><td><strong>' + lightName + '</strong></td>' +
 									'<td>' + '<input type="text" class="form-control" placeholder="Click Get!" readonly id="' + variable + data[i].id + '">' + '</td>' +
 
-									'<td><div class="input-group input-group-sm">' + 
+									'<td><div class="input-group input-group-sm">' +
 									'<input type="text" class="form-control" placeholder="Enter Brightness" id="' + functionName + 'input">'+
 									'<span class="input-group-btn">' +
 									'<button class="btn btn-default" type="button" onclick="execute(\'' + data[i].id + '\', \'' + functionName + '\'); update(\'' + data[i].id + '\', \'' + variable + '\');">go!</button>'+
@@ -112,12 +106,12 @@ var access_token = localStorage.getItem("access_token");
 									'</tr>'
 									);
 								update(data[i].id, variable);
-								
-							}		
+
+							}
 
 						}
 					}
-					
+
 					$('#lights').hide();
 					showLogout();
 
@@ -127,7 +121,7 @@ var access_token = localStorage.getItem("access_token");
 			function(err) {
 				console.log('API call failed: ', err);
 			}
-			);	
+			);
 	};
 
 
@@ -192,13 +186,13 @@ var access_token = localStorage.getItem("access_token");
 	});
 });
 
-
-
 $('#timer_set').on('click',
 	function(){
+		console.log("timer set triggered");
 		var start_num_hour= document.getElementById("timer_hours").value;
 		var start_num_min= document.getElementById("timer_minutes").value;
 		var start_num_sec= document.getElementById("timer_seconds").value;
+		console.log(start_num_sec);
 		var unit_var_hour="3600";
 		var unit_var_min="60";
 		var unit_var_sec="1";
@@ -208,13 +202,10 @@ $('#timer_set').on('click',
 
 		var countdown_output=document.getElementById("count");
 
-
 		if (start_num>0){
 			countdown_output.innerHTML = format_as_time(start_num);
 			var t=setTimeout("update_clock(\"count\", "+start_num+")", 1000);
 		}
-
-
 		return false;
 	});
 
@@ -229,7 +220,7 @@ function update_clock(countdown_div, new_value) {
 		countdown_output.innerHTML = new_formatted_value;
 
 		var t=setTimeout("update_clock(\"count\", "+new_value+")", 1000);
-	} 
+	}
 
 	else {
 		countdown_output.innerHTML = "And... Stop!";
